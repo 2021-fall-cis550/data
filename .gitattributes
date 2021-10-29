@@ -1,1 +1,6 @@
 *.csv filter=lfs diff=lfs merge=lfs -text
+raw/retrosheet/events/events.csv.02 filter=lfs diff=lfs merge=lfs -text
+raw/retrosheet/events/events.csv.03 filter=lfs diff=lfs merge=lfs -text
+raw/retrosheet/events/events.csv.04 filter=lfs diff=lfs merge=lfs -text
+raw/retrosheet/events/events.csv.00 filter=lfs diff=lfs merge=lfs -text
+raw/retrosheet/events/events.csv.01 filter=lfs diff=lfs merge=lfs -text
