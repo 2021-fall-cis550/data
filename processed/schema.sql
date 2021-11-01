@@ -32,7 +32,7 @@ CREATE TABLE Game (
   AwayScore varchar(25),
 
   PRIMARY KEY (ID),
-  FOREIGN KEY (Park) REFRENCES Park (ID),
+  FOREIGN KEY (Park) REFERENCES Park (ID),
   FOREIGN KEY (HomeTeam) REFERENCES Team (ID),
   FOREIGN KEY (AwayTeam) REFERENCES Team (ID)
 );
@@ -82,6 +82,6 @@ CREATE TABLE EventComment (
   Comment TEXT,
 
   PRIMARY KEY (GameID, EventID),
-  FOREIGN KEY (GameID) REFRENCES Game (ID),
+  FOREIGN KEY (GameID) REFERENCES Game (ID),
   FOREIGN KEY (GameID, EventID) REFERENCES Event (GameID, EventID)
 );
