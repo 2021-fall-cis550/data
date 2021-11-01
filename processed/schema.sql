@@ -47,6 +47,8 @@ CREATE TABLE Player (
   BirthDate DATE,
   Bats ENUM('R', 'L', 'B'),
   Throws ENUM('R', 'L', 'B'),
+
+  PRIMARY KEY (ID)
 );
 
 CREATE TABLE Event (
@@ -60,8 +62,8 @@ CREATE TABLE Event (
   Strikes TINYINT,
   Ball TINYINT,
 
-  INNING TINYINT,
-  LINEUP TINYINT,
+  Inning TINYINT,
+  LineUp TINYINT,
 
   EventType ENUM(
     'Unknown event', 'No event', 'Generic out', 'Strikeout', 'Stolen base', 'Defensive indifference', 'Caught stealing',
