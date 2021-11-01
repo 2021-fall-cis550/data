@@ -1,29 +1,29 @@
 
-CREATE TABLE Park {
+CREATE TABLE Park (
   ID varchar(25),
-  Name varchar(255),
+  `Name` varchar(255),
   City varchar(25),
-  State varchar(25)
+  State varchar(25),
 
   PRIMARY KEY (ID)
-};
+);
 
-CREATE TABLE Team {
+CREATE TABLE Team (
   ID varchar(25), -- TODO: Drop teamID and clean up the retroID column.
 
   PRIMARY KEY (ID)
-};
+);
 
-CREATE TABLE TeamName {
+CREATE TABLE TeamName (
   TeamID varchar(25),
-  Name varchar(255),
+  `Name` varchar(255),
   FirstYear YEAR,
 
   PRIMARY KEY (TeamID, Name),
   FOREIGN KEY TeamID REFERENCES Team (ID)
-};
+);
 
-CREATE TABLE Game {
+CREATE TABLE Game (
   ID varchar(25),
   Park varchar(25) NOT NULL,
   HomeTeam varchar(25) NOT NULL,
@@ -35,9 +35,9 @@ CREATE TABLE Game {
   FOREIGN KEY Park REFRENCES Park (ID),
   FOREIGN KEY HomeTeam REFERENCES Team (ID),
   FOREIGN KEY AwayTeam REFERENCES Team (ID)
-};
+);
 
-CREATE TABLE Player {
+CREATE TABLE Player (
   ID varchar(25), -- TODO: Drop PlayerID and migrate PlayerID to RetroID.
   FirstName varchar(25),
   LastName varchar(25),
@@ -47,9 +47,9 @@ CREATE TABLE Player {
   BirthDate DATE,
   Bats ENUM('R', 'L', 'B'),
   Throws ENUM('R', 'L', 'B'),
-};
+);
 
-CREATE TABLE Event {
+CREATE TABLE Event (
   GameID varchar(25),
   EventID int UNSIGNED,
   HomeScore varchar(25),
@@ -74,9 +74,9 @@ CREATE TABLE Event {
   FOREIGN KEY GameID REFERENCES Game (ID),
   FOREIGN KEY Batter REFERENCES Player (ID),
   FOREIGN KEY Pitcher REFERENCES Player (ID)
-};
+);
 
-CREATE TABLE EventComment {
+CREATE TABLE EventComment (
   GameID varchar(25),
   EventID int UNSIGNED,
   Comment TEXT,
@@ -84,4 +84,4 @@ CREATE TABLE EventComment {
   PRIMARY KEY (GameID, EventID),
   FOREIGN KEY GameID REFRENCES Game (ID),
   FOREIGN KEY (GameID, EventID) REFERENCES Event (GameID, EventID)
-};
+);
