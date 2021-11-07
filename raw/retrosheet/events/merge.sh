@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cat ./events.csv.0{0..4} > ../events.csv
+cat ./events.csv.0{0..5} > ../events.csv
 
