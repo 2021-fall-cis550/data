@@ -14,6 +14,16 @@ CREATE TABLE Team (
   PRIMARY KEY (ID)
 );
 
+CREATE TABLE TeamMember (
+  Year YEAR,
+  TeamID varchar(25),
+  PlayerID varchar(25),
+
+  PRIMARY KEY (Year, TeamID, PlayerID),
+  FOREIGN KEY (TeamID) REFERENCES Team(ID),
+  FOREIGN KEY (PlayerID) REFERENCES Player(ID)
+);
+
 CREATE TABLE TeamName (
   TeamID varchar(25),
   `Name` varchar(255),
