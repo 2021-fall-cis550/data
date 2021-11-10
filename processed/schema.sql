@@ -1,6 +1,6 @@
 
 CREATE TABLE Park (
-  ID varchar(25),
+  ID varchar(7),
   `Name` varchar(255),
   City varchar(25),
   State varchar(25),
@@ -35,7 +35,7 @@ CREATE TABLE TeamName (
 
 CREATE TABLE Game (
   ID varchar(25),
-  Park varchar(25) NOT NULL,
+  Park varchar(7) NOT NULL,
   HomeTeam varchar(25) NOT NULL,
   AwayTeam varchar(25) NOT NULL,
   HomeScore varchar(25),
