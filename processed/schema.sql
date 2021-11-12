@@ -19,6 +19,9 @@ CREATE TABLE Player (
   BirthDate DATE,
   Bats ENUM('R', 'L', 'B'),
   Throws ENUM('R', 'L', 'B'),
+  Weight int,
+  Height int,
+  DebutDate DATE,
 
   PRIMARY KEY (ID)
 );
