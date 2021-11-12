@@ -8,49 +8,11 @@ CREATE TABLE Park (
   PRIMARY KEY (ID)
 );
 
-CREATE TABLE Team (
-  ID varchar(25), -- TODO: Drop teamID and clean up the retroID column.
-
-  PRIMARY KEY (ID)
-);
-
-CREATE TABLE TeamMember (
-  Year YEAR,
-  TeamID varchar(25),
-  PlayerID varchar(25),
-
-  PRIMARY KEY (Year, TeamID, PlayerID),
-  FOREIGN KEY (TeamID) REFERENCES Team(ID),
-  FOREIGN KEY (PlayerID) REFERENCES Player(ID)
-);
-
-CREATE TABLE TeamName (
-  TeamID varchar(25),
-  `Name` varchar(255),
-  FirstYear YEAR,
-
-  PRIMARY KEY (TeamID, Name),
-  FOREIGN KEY (TeamID) REFERENCES Team (ID)
-);
-
-CREATE TABLE Game (
-  ID varchar(25),
-  Park int NOT NULL,
-  HomeTeam varchar(25) NOT NULL,
-  AwayTeam varchar(25) NOT NULL,
-  HomeScore varchar(25),
-  AwayScore varchar(25),
-
-  PRIMARY KEY (ID),
-  FOREIGN KEY (Park) REFERENCES Park (ID),
-  FOREIGN KEY (HomeTeam) REFERENCES Team (ID),
-  FOREIGN KEY (AwayTeam) REFERENCES Team (ID)
-);
-
 CREATE TABLE Player (
-  ID varchar(25), -- TODO: Drop PlayerID and migrate PlayerID to RetroID.
+  ID int,
   FirstName varchar(25),
   LastName varchar(25),
+  GivenName varchar(25),
   BirthCity varchar(25),
   BirthState varchar(25),
   BirthCountry varchar(25),
@@ -61,13 +23,52 @@ CREATE TABLE Player (
   PRIMARY KEY (ID)
 );
 
+CREATE TABLE Team (
+  ID int,
+
+  PRIMARY KEY (ID)
+);
+
+CREATE TABLE TeamName (
+  Year YEAR,
+  TeamID int,
+  `Name` varchar(255),
+
+  PRIMARY KEY (Year, TeamID),
+  FOREIGN KEY (TeamID) REFERENCES Team (ID)
+);
+
+CREATE TABLE TeamMember (
+  Year YEAR,
+  TeamID int,
+  PlayerID int,
+
+  PRIMARY KEY (Year, TeamID, PlayerID),
+  FOREIGN KEY (TeamID) REFERENCES Team(ID),
+  FOREIGN KEY (PlayerID) REFERENCES Player(ID)
+);
+
+CREATE TABLE Game (
+  ID int,
+  Park int NOT NULL,
+  HomeTeam int NOT NULL,
+  AwayTeam int NOT NULL,
+  HomeScore int,
+  AwayScore int,
+
+  PRIMARY KEY (ID),
+  FOREIGN KEY (Park) REFERENCES Park (ID),
+  FOREIGN KEY (HomeTeam) REFERENCES Team (ID),
+  FOREIGN KEY (AwayTeam) REFERENCES Team (ID)
+);
+
 CREATE TABLE Event (
-  GameID varchar(25),
+  GameID int,
   EventID int UNSIGNED,
-  HomeScore varchar(25),
-  AwayScore varchar(25),
-  Batter varchar(25),
-  Pitcher varchar(25),
+  HomeScore int,
+  AwayScore int,
+  Batter int,
+  Pitcher int,
 
   Strikes TINYINT,
   Ball TINYINT,
@@ -89,7 +90,7 @@ CREATE TABLE Event (
 );
 
 CREATE TABLE EventComment (
-  GameID varchar(25),
+  GameID int,
   EventID int UNSIGNED,
   Comment TEXT,
 
