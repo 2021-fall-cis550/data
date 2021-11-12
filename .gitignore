@@ -3,4 +3,4 @@ raw/retrosheet/events/events.csv.0*
 raw/retrosheet/game_data.csv
 .DS_Store
 .DSStore
-server/config.json
+__pycache__
