@@ -1,9 +1,9 @@
 
 CREATE TABLE Park (
   ID int,
-  `Name` varchar(255),
-  City varchar(25),
-  State varchar(25),
+  `Name` varchar(255) NOT NULL,
+  City varchar(25) NOT NULL,
+  `State` varchar(25) NOT NULL,
 
   PRIMARY KEY (ID)
 );
@@ -11,7 +11,7 @@ CREATE TABLE Park (
 CREATE TABLE Player (
   ID int,
   FirstName varchar(25),
-  LastName varchar(25),
+  LastName varchar(25) NOT NULL,
   GivenName varchar(25),
   BirthCity varchar(25),
   BirthState varchar(25),
@@ -19,7 +19,7 @@ CREATE TABLE Player (
   BirthDate DATE,
   Bats ENUM('R', 'L', 'B'),
   Throws ENUM('R', 'L', 'B'),
-  Weight int,
+  `Weight` int,
   Height int,
   DebutDate DATE,
 
@@ -35,7 +35,7 @@ CREATE TABLE Team (
 CREATE TABLE TeamName (
   Year YEAR,
   TeamID int,
-  `Name` varchar(255),
+  `Name` varchar(255) NOT NULL,
 
   PRIMARY KEY (Year, TeamID),
   FOREIGN KEY (TeamID) REFERENCES Team (ID)
@@ -56,8 +56,20 @@ CREATE TABLE Game (
   Park int NOT NULL,
   HomeTeam int NOT NULL,
   AwayTeam int NOT NULL,
-  HomeScore int,
-  AwayScore int,
+  HomeScore int NOT NULL,
+  AwayScore int NOT NULL,
+  `Date` DATE NOT NULL,
+  Attendance int NOT NULL,
+  Duration int NOT NULL,
+  Innings int NOT NULL,
+  HomeHits int NOT NULL,
+  AwayHits int NOT NULL,
+  HomeErr int NOT NULL,
+  AwayErr int NOT NULL,
+  HomeLob int NOT NULL,
+  AwayLob int NOT NULL,
+  Outs int NOT NULL,
+
 
   PRIMARY KEY (ID),
   FOREIGN KEY (Park) REFERENCES Park (ID),
@@ -75,10 +87,8 @@ CREATE TABLE Event (
 
   Strikes TINYINT,
   Ball TINYINT,
-
+  Outs TINYINT,
   Inning TINYINT,
-  LineUp TINYINT,
-
   EventType ENUM(
     'Unknown event', 'No event', 'Generic out', 'Strikeout', 'Stolen base', 'Defensive indifference', 'Caught stealing',
     'Pickoff error', 'Pickoff', 'Wild pitch', 'Passed ball', 'Balk', 'Other advance', 'Foul error', 'Walk',
