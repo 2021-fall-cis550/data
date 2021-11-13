@@ -33,7 +33,7 @@ CREATE TABLE Team (
 );
 
 CREATE TABLE TeamName (
-  Year YEAR,
+  `Year` int,
   TeamID int,
   `Name` varchar(255) NOT NULL,
 
@@ -42,7 +42,7 @@ CREATE TABLE TeamName (
 );
 
 CREATE TABLE TeamMember (
-  Year YEAR,
+  `Year` int,
   TeamID int,
   PlayerID int,
 
